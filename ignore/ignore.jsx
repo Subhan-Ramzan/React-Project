@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useRef } from 'react';
 import Slider from "react-slick";
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Importing react-icons
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Importing React Icons
 
 export default function Maintenance() {
     const washingInstructions = [
@@ -18,56 +18,19 @@ export default function Maintenance() {
         return Array.from({ length: totalIcons }, (_, index) => `${baseName}${index + 1}-icon.png`);
     };
 
-    const iconBaseName = "/Images/TS_RX-Daku-";
-    const totalIcons = 8;
+    const iconBaseName = "/Images/TS_RX-Daku-"; // Base name for the icons
+    const totalIcons = 8; // Total icons example
     const iconArray = generateIconArray(iconBaseName, totalIcons);
 
     const generateManufacturing = (baseName, totalIcons) => {
         return Array.from({ length: totalIcons }, (_, index) => `${baseName}1${index + 1}.png`);
     };
 
-    const BaseName = "/Images/";
-    const ManufacturingIcons = 8;
+    const BaseName = "/Images/"; // Base name for the manufacturing images
+    const ManufacturingIcons = 8; // Total icons example
     const ManufacturingArray = generateManufacturing(BaseName, ManufacturingIcons);
 
-    // Custom Previous Arrow// Custom Previous Arrow
-    const PrevArrow = ({ onClick }) => {
-        return (
-            <div
-                className="absolute left-[-2vw] sm:left-[-1.5vw] top-1/2 transform -translate-y-1/2 text-black rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
-                style={{
-                    width: "40px", // Default size
-                    height: "40px",
-                    zIndex: 2,
-                }}
-                onClick={onClick}
-            >
-                <FaChevronLeft
-                    className="text-[20px] hover:scale-125 md:text-[22px] sm:text-[12px]" // Smaller icon sizes for small screens
-                />
-            </div>
-        );
-    };
-
-    // Custom Next Arrow
-    const NextArrow = ({ onClick }) => {
-        return (
-            <div
-                className="absolute right-[-2vw] sm:right-[-1.5vw] top-1/2 transform -translate-y-1/4 max-md:-translate-y-1/2 text-black rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
-                style={{
-                    width: "40px", // Default size
-                    height: "40px",
-                    zIndex: 2,
-                }}
-                onClick={onClick}
-            >
-                <FaChevronRight
-                    className="text-[20px] hover:scale-125 md:text-[22px] sm:text-[12px]" // Smaller icon sizes for small screens
-                />
-            </div>
-        );
-    };
-
+    const sliderRef = useRef(null); // Ref for the slider
 
     const sliderSettings = {
         dots: true,
@@ -75,8 +38,6 @@ export default function Maintenance() {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 4,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
         responsive: [
             {
                 breakpoint: 1024,
@@ -95,12 +56,16 @@ export default function Maintenance() {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 3, // 4 icons visible even on small devices
                     slidesToScroll: 3,
                 },
             },
         ],
     };
+
+    // Handlers for Next and Previous buttons
+    const handleNext = () => sliderRef.current.slickNext();
+    const handlePrev = () => sliderRef.current.slickPrev();
 
     return (
         <div className="flex flex-col md:flex-row gap-3 md:gap-6 px-2 w-full">
@@ -127,18 +92,30 @@ export default function Maintenance() {
                             ))}
                         </div>
                     ) : (
-                        <div className="w-full pb-4">
-                            <Slider {...sliderSettings}>
+                        <div className="relative w-full pb-4">
+                            <button
+                                className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 hover:bg-gray-300 rounded-full shadow focus:outline-none"
+                                onClick={handlePrev}
+                            >
+                                <FaArrowLeft size={24} />
+                            </button>
+                            <Slider ref={sliderRef} {...sliderSettings}>
                                 {iconArray.map((icon, index) => (
-                                    <div key={index} className="flex items-center pl-6 max-md:pl-8 max-md:pr-4 justify-center">
+                                    <div key={index} className="flex items-center px-2 justify-center">
                                         <img
                                             src={icon}
                                             alt={`Icon ${index + 1}`}
-                                            className=" w-8 h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 object-contain"
+                                            className="w-8 h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 object-contain"
                                         />
                                     </div>
                                 ))}
                             </Slider>
+                            <button
+                                className="absolute right-[-10px] top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 hover:bg-gray-300 rounded-full shadow focus:outline-none"
+                                onClick={handleNext}
+                            >
+                                <FaArrowRight size={24} />
+                            </button>
                         </div>
                     )}
                     <ul className="list-decimal list-inside space-y-2 mt-4 text-sm md:text-base font-ibm text-[#58585A]">
@@ -173,16 +150,22 @@ export default function Maintenance() {
                             ))}
                         </div>
                     ) : (
-                        <div className="w-full pb-4">
-                            <Slider {...sliderSettings}>
+                        <div className="relative w-full pb-4">
+                            <button
+                                className="absolute left-[-40px] top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 hover:bg-gray-300 rounded-full shadow focus:outline-none"
+                                onClick={handlePrev}
+                            >
+                                <FaArrowLeft size={24} />
+                            </button>
+                            <Slider ref={sliderRef} {...sliderSettings}>
                                 {ManufacturingArray.map((icon, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-col items-center pl-6 max-md:pl-8 justify-center px-2">
+                                        className="flex flex-col items-center justify-center px-2">
                                         <img
                                             src={`${icon}`}
                                             alt={`Icon ${index + 1}`}
-                                            className="w-8 h-8 sm:w-10 sm:h-10  md:w-16 md:h-16 object-contain mb-1"
+                                            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain mb-1"
                                         />
                                         <div>
                                             <p className="text-sm sm:text-base md:px-2 text-gray-700 font-medium leading-tight">Name</p>
@@ -190,8 +173,13 @@ export default function Maintenance() {
                                     </div>
                                 ))}
                             </Slider>
+                            <button
+                                className="absolute right-0 lg:right-[-10px] top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gray-200 hover:bg-gray-300 rounded-full shadow focus:outline-none"
+                                onClick={handleNext}
+                            >
+                                <FaArrowRight size={24} />
+                            </button>
                         </div>
-
                     )}
                 </div>
             </div>

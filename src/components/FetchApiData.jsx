@@ -1,43 +1,54 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ShowApiData() {
-  const [data, setData] = useState(null); // State to store API data
-  const [loading, setLoading] = useState(true); // State to manage loading
-  const [error, setError] = useState(null); // State to manage errors
+const ProductDetails = () => {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Replace with the API URL and the required postId
-    const postId = 9442;
-    const apiUrl = `https://aep.tdd.mybluehost.me/staging/3938/wp-json/wp/v2/product-template-one/${postId}`;
-    
-    // Make API call using Axios
+    // API URL
+    const apiURL = "https://aep.tdd.mybluehost.me/staging/3938/wp-json/wp/v2/product-template-one/9442";
+
+    // Fetch data using Axios
     axios
-      .get(apiUrl)
+      .get(apiURL)
       .then((response) => {
-        setData(response.data.acf); // Store "acf" data from the response
-        setLoading(false); // Turn off loading
+        setProduct(response.data);
+        setLoading(false);
       })
-      .catch((error) => {
-        setError(error.message); // Capture error message
-        setLoading(false); // Turn off loading
+      .catch((err) => {
+        setError("Error fetching data");
+        setLoading(false);
       });
   }, []);
 
-  // Render logic
-  if (loading) return <p>Loading...</p>; // Show loading state
-  if (error) return <p>Error: {error}</p>; // Show error if occurred
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
-    <div className="p-4">
-      <h1 className="text-lg font-bold mb-4">API Data:</h1>
-      {data ? (
-        <pre className="bg-gray-100 p-4 rounded">
-          {JSON.stringify(data, null, 2)} {/* Pretty-print JSON */}
-        </pre>
-      ) : (
-        <p>No data available.</p>
-      )}
+    <div>
+      <h1>{product.acf?.main_heading || "No Title"}</h1>
+      <h2>{product.acf?.sub_heading || "No Subtitle"}</h2>
+      <p>{product.acf?.text || "No Description"}</p>
+
+      <h3>Certificates</h3>
+      <ul>
+        {product.acf?.certificates?.map((url, index) => (
+          <li key={index}>
+            <img src={url} alt={`Certificate ${index + 1}`} style={{ width: "100px" }} />
+          </li>
+        ))}
+      </ul>
+
+      <h3>Product Images</h3>
+      <div style={{ display: "flex", gap: "10px" }}>
+        {product.acf?.product_images?.map((image, index) => (
+          <img key={index} src={image} alt={`Product ${index + 1}`} style={{ width: "150px" }} />
+        ))}
+      </div>
     </div>
   );
-}
+};
+
+export default ProductDetails;

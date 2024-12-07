@@ -6,6 +6,7 @@ import Maintenance from './components/Maintenance'
 import Gallery from './components/Gallery'
 import Applications from './components/Applications'
 import Footer from './components/Footer'
+import ProductDetails from './components/FetchApiData'
 function App() {
 
   return (
@@ -16,6 +17,7 @@ function App() {
       <Maintenance />
       <Applications />
       <Footer />
+      {/* <ProductDetails /> */}
     </div>
   )
 }
