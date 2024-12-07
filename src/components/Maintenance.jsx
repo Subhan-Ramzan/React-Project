@@ -34,7 +34,7 @@ export default function Maintenance() {
     const PrevArrow = ({ onClick }) => {
         return (
             <div
-                className="absolute left-[-2vw] sm:left-[-1.5vw] top-1/2 transform -translate-y-1/2 text-black rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
+                className="absolute left-[-2vw] sm:left-[-1.5vw] top-1/2 transform -translate-y-1/2 text-[#58585A] rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
                 style={{
                     width: "40px", // Default size
                     height: "40px",
@@ -43,7 +43,7 @@ export default function Maintenance() {
                 onClick={onClick}
             >
                 <FaChevronLeft
-                    className="text-[20px] hover:scale-125 md:text-[22px] sm:text-[12px]" // Smaller icon sizes for small screens
+                    className="text-[20px] hover:scale-125 md:text-[24px] sm:text-[12px]" // Smaller icon sizes for small screens
                 />
             </div>
         );
@@ -53,7 +53,7 @@ export default function Maintenance() {
     const NextArrow = ({ onClick }) => {
         return (
             <div
-                className="absolute right-[-2vw] sm:right-[-1.5vw] top-1/2 transform -translate-y-1/4 max-md:-translate-y-1/2 text-black rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
+                className="absolute right-[-2vw] sm:right-[-1.5vw] top-1/2 transform -translate-y-1/4 max-md:-translate-y-1/2 text-[#58585A] rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
                 style={{
                     width: "40px", // Default size
                     height: "40px",
@@ -62,7 +62,7 @@ export default function Maintenance() {
                 onClick={onClick}
             >
                 <FaChevronRight
-                    className="text-[20px] hover:scale-125 md:text-[22px] sm:text-[12px]" // Smaller icon sizes for small screens
+                    className="text-[20px] hover:scale-125 md:text-[24px] sm:text-[12px]" // Smaller icon sizes for small screens
                 />
             </div>
         );
