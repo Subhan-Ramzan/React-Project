@@ -105,9 +105,9 @@ export default function Maintenance() {
         <div className="flex flex-col md:flex-row gap-3 md:gap-6 px-2 w-full">
             {/* CARE & MAINTENANCE Section */}
             <div className="py-4 w-full md:w-[55%]">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                     <hr className="border-[#58585A]" />
-                    <h2 className="font-medium font-roboto text-[#58585A] text-lg md:text-lg lg:text-xl px-4">
+                    <h2 className="font-medium font-roboto text-[#58585A] text-lg px-4">
                         CARE & MAINTENANCE
                     </h2>
                     <hr className="mb-2 border-[#58585A]" />
@@ -120,7 +120,7 @@ export default function Maintenance() {
                                     <img
                                         src={icon}
                                         alt={`Icon ${index + 1}`}
-                                        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
+                                        className="w-12 h-12 sm:w-16 outline-none border-none sm:h-16 md:w-20 md:h-20 object-contain"
                                     />
                                 </div>
                             ))}
@@ -129,11 +129,11 @@ export default function Maintenance() {
                         <div className="w-full pb-4">
                             <Slider {...sliderSettings}>
                                 {iconArray.map((icon, index) => (
-                                    <div key={index} className="flex items-center pl-6 max-md:pl-8 max-md:pr-4 justify-center">
+                                    <div key={index} className="outline-none border-none flex items-center pl-6 max-md:pl-8 max-md:pr-4 justify-center">
                                         <img
                                             src={icon}
                                             alt={`Icon ${index + 1}`}
-                                            className=" w-8 h-8 sm:w-10 sm:h-10 md:w-16 md:h-16 object-contain"
+                                            className=" w-8 h-8 sm:w-10 sm:h-10 md:w-16 outline-none border-none md:h-16 object-contain"
                                         />
                                     </div>
                                 ))}
@@ -150,22 +150,22 @@ export default function Maintenance() {
 
             {/* MANUFACTURING Section */}
             <div className="py-4 w-full md:w-[45%]">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                     <hr className="border-[#58585A] " />
-                    <h2 className="font-medium font-roboto text-[#58585A] text-lg md:text-xl lg:text-xl px-4">
+                    <h2 className="font-medium font-roboto text-[#58585A] text-lg px-4">
                         MANUFACTURING
                     </h2>
                     <hr className="mb-2 border-[#58585A] " />
                 </div>
-                <div className="p-2 md:p-4">
+                <div className="p-2 md:p-4 outline-none border-none">
                     {ManufacturingArray.length <= 5 ? (
-                        <div className="flex flex-wrap gap-2 sm:gap-4 justify-center">
+                        <div className="flex flex-wrap gap-2 sm:gap-4 justify-center outline-none border-none ">
                             {ManufacturingArray.map((icon, index) => (
-                                <div key={index} className="flex items-center justify-center">
+                                <div key={index} className="flex outline-none border-none items-center justify-center">
                                     <img
                                         src={`${icon}`}
                                         alt={`Icon ${index + 1}`}
-                                        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain"
+                                        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain outline-none border-none"
                                     />
                                     <p>ada</p>
                                 </div>
@@ -177,14 +177,14 @@ export default function Maintenance() {
                                 {ManufacturingArray.map((icon, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-col items-center pl-6 max-md:pl-8 justify-center px-2">
+                                        className="flex flex-col items-center outline-none border-none pl-6 max-md:pl-8 justify-center px-2">
                                         <img
                                             src={`${icon}`}
                                             alt={`Icon ${index + 1}`}
-                                            className="w-8 h-8 sm:w-10 sm:h-10  md:w-16 md:h-16 object-contain mb-1"
+                                            className="w-8 h-8 sm:w-10 sm:h-10 outline-none border-none  md:w-16 md:h-16 object-contain mb-1"
                                         />
                                         <div>
-                                            <p className="text-sm sm:text-base md:px-2 text-gray-700 font-medium">Name</p>
+                                            <p className="text-sm sm:text-base md:px-2 text-[#6f6f70] font-medium">Name</p>
                                         </div>
                                     </div>
                                 ))}

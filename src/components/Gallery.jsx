@@ -25,22 +25,20 @@ const App = () => {
     };
 
     return (
-        <div className="max-h-screen flex flex-col items-center justify-center p-4 pt-10">
+        <div className="max-h-screen max-md:w-full flex flex-col items-center md:justify-center p-4 pt-10">
             {/* Slider with Thumbnails */}
-            <div className="relative w-full max-w-5xl">
+            <div className="relative w-full md:max-w-5xl">
                 {/* Slider Images */}
-                <div className="relative w-[60vw]  mx-auto h-[450px] overflow-hidden rounded-lg shadow-lg">
+                <div className="relative md:w-[60vw]  mx-auto h-[400px] md:h-[450px] overflow-hidden rounded-lg shadow-lg">
                     <div
-                        className="w-[60vw] h-[70vh] flex transition-transform duration-500"
-                        style={{ transform: `translateX(-${currentImage * 100}%)` }}
-                    >
+                        className="md:w-[60vw] h-[60vh] md:h-[70vh] flex transition-transform duration-500"
+                        style={{ transform: `translateX(-${currentImage * 100}%)` }}>
                         {images.map((image, index) => (
                             <img
                                 key={index}
                                 src={image}
                                 alt={`Slide ${index + 1}`}
-                                className="w-full h-full object-cover flex-shrink-0"
-                            />
+                                className="w-full h-full object-cover flex-shrink-0" />
                         ))}
                     </div>
 
