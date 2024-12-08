@@ -3,7 +3,6 @@ import React from 'react';
 export default function Footer() {
     return (
         <>
-            <hr className="mb-2 border-[#58585A] border" />
             <div className="flex flex-wrap justify-center py-8">
                 <div className="w-full bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-4 md:gap-6 px-4 py-6">
 

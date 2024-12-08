@@ -14,11 +14,11 @@ export default function Technical() {
     return (
         <div className="md:py-4 pt-4 w-full">
             <div className="flex flex-col gap-3">
-                <hr className="border-[#58585A] border" />
+                <hr className="border-[#58585A] " />
                 <h2 className="font-semibold font-roboto text-lg sm:text-xl px-4 text-center text-[#58585A]">
                     TECHNICAL PROPERTIES*
                 </h2>
-                <hr className="mb-2 border-[#58585A] border" />
+                <hr className="mb-2 border-[#58585A] " />
             </div>
             <div className="p-2 md:p-4">
                 {fabricDetails.map((item, index) => (

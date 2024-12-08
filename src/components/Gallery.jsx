@@ -1,87 +1,85 @@
 import React, { useState } from "react";
-import { FaTimes } from "react-icons/fa";  // Import the cross icon
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
-const Gallery = () => {
-    const [zoomStyles, setZoomStyles] = useState({ display: "none", backgroundPosition: "center" });
-    const [isZoomed, setIsZoomed] = useState(false);
+const images = [
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkoQ7a8RHWRwj8hrha4KJERrAAPW3RmSvtTw&s",
+    "/2k-Image-2.jpeg",
+    "/2k-Image-3.jpeg",
+    "/Images/p_2_9.png",
+    "/Images/p_3_9-removebg-preview.png",
+];
 
-    // Mouse move event for zoom effect on larger devices
-    const handleMouseMove = (e) => {
-        const rect = e.target.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100; // X percentage
-        const y = ((e.clientY - rect.top) / rect.height) * 100; // Y percentage
+const App = () => {
+    const [currentImage, setCurrentImage] = useState(0);
 
-        setZoomStyles({
-            display: "block",
-            backgroundPosition: `${x}% ${y}%`,
-        });
+    const handleThumbnailClick = (index) => {
+        setCurrentImage(index);
     };
 
-    // Mouse leave event to remove the zoom effect
-    const handleMouseLeave = () => {
-        setZoomStyles({ display: "none" });
+    const handleNext = () => {
+        setCurrentImage((prev) => (prev + 1) % images.length);
     };
 
-    // Click event for mobile devices to show image in full-screen
-    const handleImageClick = () => {
-        if (window.innerWidth <= 768) {
-            setIsZoomed(true); // Show full-screen image on mobile
-        }
-    };
-
-    // Close the zoomed image view
-    const handleClose = () => {
-        setIsZoomed(false);
+    const handlePrev = () => {
+        setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
     };
 
     return (
-        <div className="w-full py-4 relative">
-            {/* Main content */}
-            <div className="flex flex-col">
-                <hr className="border-gray-500 border" />
-                <div className="relative w-full">
-                    {/* Main Image */}
-                    <img
-                        src="/Images/p_3_1.png"
-                        alt="Product"
-                        className="w-full h-auto py-4 object-cover rounded-lg shadow-lg cursor-pointer"
-                        onMouseMove={handleMouseMove}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={handleImageClick} // Add click event for mobile
-                    />
-
-                    {/* Zoomed View for large devices */}
+        <div className="max-h-screen flex flex-col items-center justify-center p-4 pt-10">
+            {/* Slider with Thumbnails */}
+            <div className="relative w-full max-w-5xl">
+                {/* Slider Images */}
+                <div className="relative w-[60vw]  mx-auto h-[450px] overflow-hidden rounded-lg shadow-lg">
                     <div
-                        className="absolute top-0 left-0 w-full h-full pointer-events-none rounded-lg border"
-                        style={{
-                            ...zoomStyles,
-                            backgroundImage: "url('/Images/p_3_1.png')",
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "200%", // Adjust zoom level
-                        }}
-                    ></div>
-                </div>
-                <hr className="border-gray-500 border" />
-            </div>
-
-            {/* Full-Screen Zoom for mobile */}
-            {isZoomed && window.innerWidth <= 768 && (
-                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-50 flex justify-center items-center">
-                    <button
-                        onClick={handleClose}
-                        className="absolute top-4 right-4 text-white text-3xl focus:outline-none"
+                        className="w-[60vw] h-[70vh] flex transition-transform duration-500"
+                        style={{ transform: `translateX(-${currentImage * 100}%)` }}
                     >
-                        <FaTimes />
+                        {images.map((image, index) => (
+                            <img
+                                key={index}
+                                src={image}
+                                alt={`Slide ${index + 1}`}
+                                className="w-full h-full object-cover flex-shrink-0"
+                            />
+                        ))}
+                    </div>
+
+                    {/* Navigation Buttons */}
+                    <button
+                        onClick={handlePrev}
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
+                    >
+                        <AiOutlineLeft size={24} />
                     </button>
-                    <img
-                        src="/Images/p_3_1.png"
-                        alt="Zoomed Product"
-                        className="w-auto max-w-full min-h-full object-contain"
-                    />
+                    <button
+                        onClick={handleNext}
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70"
+                    >
+                        <AiOutlineRight size={24} />
+                    </button>
                 </div>
-            )}
+
+                {/* Thumbnails */}
+                <div className="flex mt-4 gap-2 justify-center">
+                    {images.map((image, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleThumbnailClick(index)}
+                            onMouseEnter={() => handleThumbnailClick(index)}
+                            className={`border-2 rounded-lg overflow-hidden ${currentImage === index ? "border-gray-500" : "border-gray-300"
+                                }`}
+                        >
+                            <img
+                                src={image}
+                                alt={`Thumbnail ${index + 1}`}
+                                className="w-24 rounded-lg h-16 object-cover"
+                            />
+                        </button>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
 
-export default Gallery;
+export default App;

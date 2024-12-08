@@ -70,7 +70,6 @@ export default function Maintenance() {
 
 
     const sliderSettings = {
-        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 4,
@@ -107,11 +106,11 @@ export default function Maintenance() {
             {/* CARE & MAINTENANCE Section */}
             <div className="py-4 w-full md:w-[55%]">
                 <div className="flex flex-col gap-2">
-                    <hr className="border-[#58585A] border" />
+                    <hr className="border-[#58585A]" />
                     <h2 className="font-medium font-roboto text-[#58585A] text-lg md:text-lg lg:text-xl px-4">
                         CARE & MAINTENANCE
                     </h2>
-                    <hr className="mb-2 border-[#58585A] border" />
+                    <hr className="mb-2 border-[#58585A]" />
                 </div>
                 <div className="p-2 md:p-4">
                     {iconArray.length <= 5 ? (
@@ -152,11 +151,11 @@ export default function Maintenance() {
             {/* MANUFACTURING Section */}
             <div className="py-4 w-full md:w-[45%]">
                 <div className="flex flex-col gap-2">
-                    <hr className="border-[#58585A] border" />
+                    <hr className="border-[#58585A] " />
                     <h2 className="font-medium font-roboto text-[#58585A] text-lg md:text-xl lg:text-xl px-4">
                         MANUFACTURING
                     </h2>
-                    <hr className="mb-2 border-[#58585A] border" />
+                    <hr className="mb-2 border-[#58585A] " />
                 </div>
                 <div className="p-2 md:p-4">
                     {ManufacturingArray.length <= 5 ? (
@@ -185,7 +184,7 @@ export default function Maintenance() {
                                             className="w-8 h-8 sm:w-10 sm:h-10  md:w-16 md:h-16 object-contain mb-1"
                                         />
                                         <div>
-                                            <p className="text-sm sm:text-base md:px-2 text-gray-700 font-medium leading-tight">Name</p>
+                                            <p className="text-sm sm:text-base md:px-2 text-gray-700 font-medium">Name</p>
                                         </div>
                                     </div>
                                 ))}

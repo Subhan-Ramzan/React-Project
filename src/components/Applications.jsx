@@ -6,9 +6,9 @@ export default function Applications() {
             {/* Section for International Certifications */}
             <div className="flex flex-col w-full md:w-[55%] py-4 md:pr-4">
                 <div className="flex flex-col mb-6">
-                    <hr className="mb-2 border-[#58585A] border" />
+                    <hr className="mb-2 border-[#58585A] " />
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-roboto text-[#58585A] font-semibold mb-4 px-3">INTERNATIONAL CERTIFICATIONS</h2>
-                    <hr className="mb-2 border-[#58585A] border" />
+                    <hr className="mb-2 border-[#58585A] " />
 
                     <div className="flex gap-4 justify-center sm:justify-start">
                         <img
@@ -37,9 +37,9 @@ export default function Applications() {
             {/* Section for Applications */}
             <div className="flex flex-col w-full md:w-[45%] py-4">
                 <div className="flex flex-col mb-6">
-                    <hr className="mb-2 border-[#58585A] border" />
+                    <hr className="mb-2 border-[#58585A] " />
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold font-roboto text-[#58585A] mb-4 px-4">APPLICATIONS</h2>
-                    <hr className="mb-2 border-[#58585A] border" />
+                    <hr className="mb-2 border-[#58585A] " />
                     <div className="flex gap-4 justify-center sm:justify-start px-4">
                         <div className="flex flex-col items-center">
                             <img
