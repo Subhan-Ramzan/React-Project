@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
-const images = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkoQ7a8RHWRwj8hrha4KJERrAAPW3RmSvtTw&s",
-    "/2k-Image-2.jpeg",
-    "/2k-Image-3.jpeg",
-    "/Images/p_2_9.png",
-    "/Images/p_3_9-removebg-preview.png",
-];
+const App = ({ product }) => {
+    // Extract images from product.acf?.product_images and make sure it's not undefined
+    const images = product.acf?.product_images?.map((image) => image) || [];
+    // console.log(images.length);
 
-const App = () => {
     const [currentImage, setCurrentImage] = useState(0);
 
     const handleThumbnailClick = (index) => {
@@ -29,16 +25,18 @@ const App = () => {
             {/* Slider with Thumbnails */}
             <div className="relative w-full md:max-w-5xl">
                 {/* Slider Images */}
-                <div className="relative md:w-[60vw]  mx-auto h-[400px] md:h-[450px] overflow-hidden rounded-lg shadow-lg">
+                <div className="relative md:w-[60vw] mx-auto h-[400px] md:h-[450px] overflow-hidden rounded-lg shadow-lg">
                     <div
                         className="md:w-[60vw] h-[60vh] md:h-[70vh] flex transition-transform duration-500"
-                        style={{ transform: `translateX(-${currentImage * 100}%)` }}>
+                        style={{ transform: `translateX(-${currentImage * 100}%)` }}
+                    >
                         {images.map((image, index) => (
                             <img
                                 key={index}
                                 src={image}
                                 alt={`Slide ${index + 1}`}
-                                className="w-full h-full object-cover flex-shrink-0" />
+                                className="w-full h-full object-cover flex-shrink-0"
+                            />
                         ))}
                     </div>
 

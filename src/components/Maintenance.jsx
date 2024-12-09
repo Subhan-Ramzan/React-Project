@@ -2,17 +2,13 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Importing React Icons
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-export default function Maintenance() {
-    const washingInstructions = [
-        "Wash with cold water and a mild detergent solution.",
-        "Do not wring dry.",
-        "Do not tumble dry.",
-        "Do not bleach.",
-        "Dry clean with any solvent except trichloroethylene.",
-        "Iron at low temperature (230°F/110°C or below).",
-    ];
+export default function Maintenance({ product }) {
+
+    const text = product.acf?.text;
+
+    const textArray = text.split(/(?=\d\.\s)/).map(item => item.trim());
 
     const generateIconArray = (baseName, totalIcons) => {
         return Array.from({ length: totalIcons }, (_, index) => `${baseName}${index + 1}-icon.png`);
@@ -140,9 +136,9 @@ export default function Maintenance() {
                             </Slider>
                         </div>
                     )}
-                    <ul className="list-decimal list-inside space-y-2 mt-4 text-sm md:text-base font-ibm text-[#58585A]">
-                        {washingInstructions.map((instruction, index) => (
-                            <li key={index}>{instruction}</li>
+                    <ul className="space-y-2 mt-4 text-sm md:text-base font-roboto text-[#58585A]">
+                        {textArray.map((line, index) => (
+                            <li key={index}>{line}</li>
                         ))}
                     </ul>
                 </div>
