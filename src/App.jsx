@@ -15,10 +15,11 @@ function App() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
+  const port = 9445
   useEffect(() => {
     // API URL
-    const apiURL = "https://aep.tdd.mybluehost.me/staging/3938/wp-json/wp/v2/product-template-one/9442";
+    const apiURL = `https://aep.tdd.mybluehost.me/staging/3938/wp-json/wp/v2/product-template-one/${port}`;
 
     // Fetch data using Axios
     axios
