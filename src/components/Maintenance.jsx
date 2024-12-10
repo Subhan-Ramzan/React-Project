@@ -222,7 +222,7 @@ export default function Maintenance({ product }) {
                 </div>
             </div>
             {/* MANUFACTURING Section */}
-            <div className="py-4 w-full md:w-[45%]">
+            <div className="py-4 w-full md:w-[42%]">
                 <div className="flex flex-col gap-1">
                     <hr className="border-[#58585A]" />
                     <h2 className="font-medium font-roboto text-[#58585A] text-lg px-4">

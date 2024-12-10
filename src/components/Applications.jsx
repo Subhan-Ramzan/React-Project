@@ -114,7 +114,7 @@ export default function Applications({ product }) {
                             ))}
                         </Slider>
                     ) : (
-                        <ul className="flex gap-3 justify-center sm:justify-start">
+                        <ul className="flex gap-1 justify-center sm:justify-start">
                             {product.acf?.certificates?.map((url, index) => (
                                 <li key={index}>
                                     <img

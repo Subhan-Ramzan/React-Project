@@ -15,7 +15,7 @@ function App() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const port = 9445
   useEffect(() => {
     // API URL
@@ -38,7 +38,7 @@ function App() {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="lg:px-20 px-2 py-6 md:py-10 scroll-smooth">
+    <div className="lg:px-24 px-2 py-6 md:py-10 scroll-smooth">
 
       <Routes>
         {/* Define the route for the home page */}
