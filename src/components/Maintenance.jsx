@@ -176,7 +176,7 @@ export default function Maintenance({ product }) {
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-3 md:gap-6 px-2 w-full">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-9 px-2 w-full">
             {/* CARE & MAINTENANCE Section */}
             <div className="py-4 w-full md:w-[55%]">
                 <div className="flex flex-col gap-1">
