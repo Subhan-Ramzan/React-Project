@@ -3,12 +3,12 @@ import React from 'react';
 export default function Footer() {
     return (
         <>
-            <div className="flex flex-wrap justify-center py-8 mt-12 px-4">
-                <div className="w-full flex flex-col md:flex-row gap-4 md:gap-6 px-4 py-6">
+            <div className="flex flex-wrap justify-center items-center mt-12 px-4">
+                <div className="w-full flex flex-col md:flex-row gap-4 md:gap-6 px-4 pt-6">
 
                     {/* Disclaimer Text */}
                     <div className="w-full md:w-[100%] mb-4 md:mb-0">
-                        <p className="text-xs sm:text-sm md:text-sm font-roboto text-[#58585A]">
+                        <p className="text-xs font-roboto text-[#58585A]">
                             IMPORTANT: The values and recommendations in this card are not contractual and cannot be used as a claim for order cancellations or returns. This technical data may vary at any time without previous notice. Color samples may not necessarily be an exact match of the material to be used to produce your order. Returns will not be accepted due to minor variations of color or texture.
                         </p>
                     </div>
@@ -21,7 +21,7 @@ export default function Footer() {
                                 width="48"
                                 height="48"
                                 src="https://aep.tdd.mybluehost.me/staging/3938/wp-content/uploads/2024/11/TS_RX-Daku-qr-icon.png"
-                                className="w-24 h-24 sm:w-28 sm:h-28 md:w-20 md:h-20 object-cover"
+                                className="w-20 h-20 md:w-16 md:h-16 object-cover"
                                 alt="QR Code"
                             />
                         </div>

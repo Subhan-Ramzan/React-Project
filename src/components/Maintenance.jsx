@@ -18,7 +18,7 @@ export default function Maintenance({ product }) {
 
     // console.log(images);
     console.log(Manimages);
-    
+
     const generateIconArray = (baseName, totalIcons) => {
         return Array.from({ length: totalIcons }, (_, index) => `${baseName}${index + 1}-icon.png`);
     };
@@ -221,27 +221,33 @@ export default function Maintenance({ product }) {
                     </ul>
                 </div>
             </div>
-
             {/* MANUFACTURING Section */}
             <div className="py-4 w-full md:w-[45%]">
                 <div className="flex flex-col gap-1">
-                    <hr className="border-[#58585A] " />
+                    <hr className="border-[#58585A]" />
                     <h2 className="font-medium font-roboto text-[#58585A] text-lg px-4">
                         MANUFACTURING
                     </h2>
-                    <hr className="mb-2 border-[#58585A] " />
+                    <hr className="mb-2 border-[#58585A]" />
                 </div>
                 <div className="p-2 md:p-4 outline-none border-none">
                     {images.length < 4 ? (
-                        <div className="flex gap-2 sm:gap-4 justify-center items-center text-center outline-none border-none ">
+                        <div className="flex gap-4 justify-center items-center text-center">
                             {images.map((image, index) => (
-                                <div key={index} className="flex flex-col items-center outline-none border-none pl-6 max-md:pl-8 justify-center px-2">
-                                    <img
-                                        src={image.box_image}
-                                        alt={image.box_name}
-                                        className="w-8 h-8 sm:w-10 sm:h-10 outline-none border-none md:w-16 md:h-16 object-contain mb-1"
-                                    />
-                                    <p className="text-xs md:px-2 text-[#6f6f70] font-medium">{image.box_name}</p>
+                                <div
+                                    key={index}
+                                    className="flex flex-col items-center justify-center text-center px-4"
+                                >
+                                    <div className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
+                                        <img
+                                            src={image.box_image}
+                                            alt={image.box_name}
+                                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-fill"
+                                        />
+                                    </div>
+                                    <p className="mtext-sm text-[#6f6f70] font-medium">
+                                        {image.box_name}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -251,21 +257,26 @@ export default function Maintenance({ product }) {
                                 {images.map((image, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-col items-center outline-none border-none pl-6 max-md:pl-8 justify-center px-2">
-                                        <img
-                                            src={image.box_image}
-                                            alt={image.box_name}
-                                            className="w-8 h-8 flex justify-center items-center text-center  sm:w-10 sm:h-10 outline-none border-none md:w-16 md:h-16 object-contain mb-1"
-                                        />
-                                        <p className="text-xs md:px-2 text-[#6f6f70] font-medium">{image.box_name}</p>
+                                        className="flex flex-col items-center justify-center text-center px-4"
+                                    >
+                                        <div className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 ">
+                                            <img
+                                                src={image.box_image}
+                                                alt={image.box_name}
+                                                className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-fill"
+                                            />
+                                        </div>
+                                        <p className="text-sm text-[#6f6f70] font-medium">
+                                            {image.box_name}
+                                        </p>
                                     </div>
                                 ))}
                             </Slider>
                         </div>
-
                     )}
                 </div>
             </div>
+
         </div>
     );
 }
