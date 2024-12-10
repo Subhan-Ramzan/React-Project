@@ -19,7 +19,7 @@ export default function Applications({ product }) {
 
     const PrevArrow = ({ onClick }) => (
         <div
-            className="absolute top-1/2 left-0 md:-left-8 transform text-[#58585A] -translate-y-1/2 z-10 cursor-pointer"
+            className="absolute top-1/2 left-0 md:-left-3 transform text-[#58585A] -translate-y-1/2 z-10 cursor-pointer"
             onClick={onClick}
         >
             <FaChevronLeft
