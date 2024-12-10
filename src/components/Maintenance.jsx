@@ -184,7 +184,7 @@ export default function Maintenance({ product }) {
                     <h2 className="font-medium font-roboto text-[#58585A] text-lg px-4">
                         CARE & MAINTENANCE
                     </h2>
-                    <hr className="mb-2 border-[#58585A]" />
+                    <hr className="mb-4 border-[#58585A]" />
                 </div>
                 <div className="p-2 md:p-4">
                     {iconArray.length <= 5 ? (
@@ -228,9 +228,9 @@ export default function Maintenance({ product }) {
                     <h2 className="font-medium font-roboto text-[#58585A] text-lg px-4">
                         MANUFACTURING
                     </h2>
-                    <hr className="mb-2 border-[#58585A]" />
+                    <hr className=" border-[#58585A]" />
                 </div>
-                <div className="p-2 md:p-4 outline-none border-none">
+                <div className=" outline-none border-none">
                     {images.length < 4 ? (
                         <div className="flex gap-4 justify-center items-center text-center">
                             {images.map((image, index) => (
@@ -238,7 +238,7 @@ export default function Maintenance({ product }) {
                                     key={index}
                                     className="flex flex-col items-center justify-center text-center px-4"
                                 >
-                                    <div className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
+                                    <div className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-30 md:h-30">
                                         <img
                                             src={image.box_image}
                                             alt={image.box_name}
