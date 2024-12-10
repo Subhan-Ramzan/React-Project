@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default function Applications({ product }) {
+    const images = product.acf?.applications_boxes?.map((image) => image) || [];
+
     return (
         <div className="flex flex-wrap px-4 md:px-6 lg:px-8">
             {/* Section for International Certifications */}
@@ -33,32 +35,21 @@ export default function Applications({ product }) {
                     </h2>
                     <hr className="mb-12 border-[#58585A]" />
                     <div className="flex gap-x-12 justify-center sm:justify-start px-6">
-                        <div className="flex flex-col items-center">
-                            <img
-                                loading="lazy"
-                                width="86"
-                                height="102"
-                                src="https://aep.tdd.mybluehost.me/staging/3938/wp-content/uploads/2024/11/TS_RX-Daku-10-icon.png"
-                                className="w-12 md:w-16 lg:w-20 h-12 md:h-16 lg:h-20 object-contain"
-                                alt="Roller Shades"
-                            />
-                            <p className="text-xs sm:text-sm md:text-base text-center font-roboto text-[#858586] mt-2">
-                                Roller Shades
-                            </p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img
-                                loading="lazy"
-                                width="102"
-                                height="100"
-                                src="https://aep.tdd.mybluehost.me/staging/3938/wp-content/uploads/2024/11/TS_RX-Daku-11-icon.png"
-                                className="w-12 md:w-16 lg:w-20 h-12 md:h-16 lg:h-20 object-contain"
-                                alt="Indoor Use"
-                            />
-                            <p className="text-xs sm:text-sm md:text-base text-center font-roboto text-[#858586] mt-2">
-                                Indoor Use Only
-                            </p>
-                        </div>
+                        {images.map((image, index) => (
+                            <div key={index} className="flex flex-col items-center">
+                                <img
+                                    loading="lazy"
+                                    width="86"
+                                    height="102"
+                                    src={image.application_image}
+                                    className="w-12 md:w-16 lg:w-20 h-12 md:h-16 lg:h-20 object-contain"
+                                    alt="Roller Shades"
+                                />
+                                <p className="text-xs sm:text-sm md:text-base text-center font-roboto text-[#858586] mt-2">
+                                    {image.application_name}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

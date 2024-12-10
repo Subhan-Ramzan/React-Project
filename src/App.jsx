@@ -5,7 +5,7 @@ import Maintenance from './components/Maintenance';
 import Gallery from './components/Gallery';
 import Applications from './components/Applications';
 import Footer from './components/Footer';
-import ProductDetails from './components/FetchApiData';
+// import ProductDetails from './components/FetchApiData';
 import { Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -56,7 +56,7 @@ function App() {
         />
 
         {/* Define the route for the product page */}
-        <Route path="/product" element={<ProductDetails />} />
+        {/* <Route path="/product" element={<ProductDetails />} /> */}
       </Routes>
     </div>
   );

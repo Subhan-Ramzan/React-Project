@@ -10,6 +10,12 @@ export default function Maintenance({ product }) {
 
     const textArray = text.split(/(?=\d\.\s)/).map(item => item.trim());
 
+    console.log(product.acf?.care_maintenance_icons);
+
+    const images = product.acf?.manufacturing_box?.map((image) => image) || [];
+
+    console.log(images);
+
     const generateIconArray = (baseName, totalIcons) => {
         return Array.from({ length: totalIcons }, (_, index) => `${baseName}${index + 1}-icon.png`);
     };
@@ -26,13 +32,12 @@ export default function Maintenance({ product }) {
     const ManufacturingIcons = 8;
     const ManufacturingArray = generateManufacturing(BaseName, ManufacturingIcons);
 
-    // Custom Previous Arrow// Custom Previous Arrow
     const PrevArrow = ({ onClick }) => {
         return (
             <div
                 className="absolute left-[-2vw] sm:left-[-1.5vw] top-1/2 transform -translate-y-1/2 text-[#58585A] rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
                 style={{
-                    width: "40px", // Default size
+                    width: "40px",
                     height: "40px",
                     zIndex: 2,
                 }}
@@ -51,7 +56,7 @@ export default function Maintenance({ product }) {
             <div
                 className="absolute right-[-2vw] sm:right-[-1.5vw] top-1/2 transform -translate-y-1/4 max-md:-translate-y-1/2 text-[#58585A] rounded-full flex items-center hover:scale-125 justify-center cursor-pointer"
                 style={{
-                    width: "40px", // Default size
+                    width: "40px",
                     height: "40px",
                     zIndex: 2,
                 }}
@@ -154,34 +159,32 @@ export default function Maintenance({ product }) {
                     <hr className="mb-2 border-[#58585A] " />
                 </div>
                 <div className="p-2 md:p-4 outline-none border-none">
-                    {ManufacturingArray.length <= 5 ? (
-                        <div className="flex flex-wrap gap-2 sm:gap-4 justify-center outline-none border-none ">
-                            {ManufacturingArray.map((icon, index) => (
-                                <div key={index} className="flex outline-none border-none items-center justify-center">
+                    {images.length <= 5 ? (
+                        <div className="flex gap-2 sm:gap-4 justify-center items-center text-center outline-none border-none ">
+                            {images.map((image, index) => (
+                                <div key={index} className="flex flex-col items-center outline-none border-none pl-6 max-md:pl-8 justify-center px-2">
                                     <img
-                                        src={`${icon}`}
-                                        alt={`Icon ${index + 1}`}
-                                        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain outline-none border-none"
+                                        src={image.box_image}
+                                        alt={image.box_name}
+                                        className="w-8 h-8 sm:w-10 sm:h-10 outline-none border-none md:w-16 md:h-16 object-contain mb-1"
                                     />
-                                    <p>ada</p>
+                                    <p className="text-sm sm:text-base md:px-2 text-[#6f6f70] font-medium">{image.box_name}</p>
                                 </div>
                             ))}
                         </div>
                     ) : (
                         <div className="w-full pb-4">
                             <Slider {...sliderSettings}>
-                                {ManufacturingArray.map((icon, index) => (
+                                {images.map((image, index) => (
                                     <div
                                         key={index}
                                         className="flex flex-col items-center outline-none border-none pl-6 max-md:pl-8 justify-center px-2">
                                         <img
-                                            src={`${icon}`}
-                                            alt={`Icon ${index + 1}`}
-                                            className="w-8 h-8 sm:w-10 sm:h-10 outline-none border-none  md:w-16 md:h-16 object-contain mb-1"
+                                            src={image.box_image}
+                                            alt={image.box_name}
+                                            className="w-8 h-8 sm:w-10 sm:h-10 outline-none border-none md:w-16 md:h-16 object-contain mb-1"
                                         />
-                                        <div>
-                                            <p className="text-sm sm:text-base md:px-2 text-[#6f6f70] font-medium">Name</p>
-                                        </div>
+                                        <p className="text-sm sm:text-base md:px-2 text-[#6f6f70] font-medium">{image.box_name}</p>
                                     </div>
                                 ))}
                             </Slider>

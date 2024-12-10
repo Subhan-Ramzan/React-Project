@@ -1,14 +1,15 @@
 import React from 'react';
 
-export default function Technical() {
+export default function Technical({ product }) {
     const fabricDetails = [
-        { label: "Composition", value: "100% PES" },
-        { label: "Weight", value: "163,5 g/m² ± 5% | 4.82 oz/yd² ± 5%" },
-        { label: "Roll Width", value: "3.0 m | 118 in" },
-        { label: "Roll Length", value: "50 m | 54.68 yd" },
-        { label: "Fabric Construction", value: "Woven" },
-        { label: "Weave Type", value: "Plain" },
-        { label: "Flame Retardant", value: "NFPA 701" },
+        { label: "Composition", value: product.acf?.Composition || "100% PES" },
+        { label: "Weight", value: product.acf?.Weight || "163,5 g/m² ± 5% | 4.82 oz/yd² ± 5%" },
+        { label: "Thickness", value: product.acf?.Thickness || "N/A" },
+        { label: "Roll Width", value: product.acf?.roll_width || "3.0 m | 118 in" },
+        { label: "Roll Length", value: product.acf?.roll_length || "50 m | 54.68 yd" },
+        { label: "Light Fastness", value: product.acf?.light_fastness || "N/A" },
+        { label: "Model", value: product.acf?.model || "Plain" },
+        { label: "Note", value: product.acf?.note || "NFPA 701" },
     ];
 
     return (
